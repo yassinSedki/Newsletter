@@ -1,0 +1,24 @@
+{% extends "template.html.twig" %} 
+    {% block title%}
+        upload
+        {% endblock %}
+
+        {% block body %}
+           {{ form_start(form, {'attr': {'novalidate': 'novalidate'}})}}
+<div class="form-group">
+    {{ form_label(form.file, 'Upload File', {'label_attr': {'class': 'form-label'}}) }}
+    <div class="custom-file">
+        {{ form_widget(form.file, {'attr': {'class': 'custom-file-input'}}) }}
+    </div>
+    {{ form_errors(form.file) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.category, 'Category', {'label_attr': {'class': 'mr-sm-2'}}) }}
+    {{ form_widget(form.category, {'attr': {'class': 'form-select'}}) }}
+    {{ form_errors(form.category) }}
+</div>
+
+{{form_row(form.submit,{'attr':{'class':'btn btn-success'}})}}
+
+{{form_end(form)}}
+        {% endblock %}

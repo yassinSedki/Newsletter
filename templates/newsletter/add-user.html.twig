@@ -1,0 +1,28 @@
+{% extends "template.html.twig" %} 
+
+       {% block title%}
+        add user
+        {% endblock %}
+       
+        {% block pageTitle %}
+             add user                        
+        {% endblock %}
+   
+        {% block body %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}})}}
+<div class="form-group">
+{{ form_row(form.email,{'attr':{'class':'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.categories, 'Categories', {'label_attr': {'class': 'mr-sm-2'}}) }}
+    {{ form_widget(form.categories, {'attr': {'class': 'form-select'}}) }}
+    {{ form_errors(form.categories) }}
+</div>
+
+{{form_row(form.add,{'attr':{'class':'btn btn-success'}})}}
+
+{{form_end(form)}}
+
+ 
+        {% endblock %}
+    

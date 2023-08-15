@@ -1,0 +1,15 @@
+{# templates/newsletter/email.html.twig #}
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ newsletter.name }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="col-sm-3">{{ newsletter.name }}</h1>
+
+    <p class="mb-0">
+        {{ newsletter.content }}
+        <img src="http://127.0.0.1:8000/images/pixel.png" width="1" height="1" alt="" style="display: none;">
+    </p>
+{% endblock %}

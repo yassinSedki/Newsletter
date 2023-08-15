@@ -1,0 +1,62 @@
+{% extends "template.html.twig" %}
+{% block title%}
+      users
+        {% endblock %}
+        {% block pageTitle %}
+             users List                        
+        {% endblock %}
+        {% block body %}
+        <br>
+
+                        
+        
+         <button type="button" class="btn btn-success" >
+<a href="{{ path('export.emails') }}" style="color: #ffff;text-decoration: none;">export emails </a>  
+ 
+</button>
+<br>
+<br>
+        <table   class="table table-dark table-striped">
+        
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">email</th>
+                    <th scope="col">category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {% for category in user.getCategories() %}
+                            {{ category.getName() }}
+                        {% endfor %}
+                    </td> 
+                   
+                    
+                </tr>
+                {% endfor %}
+               
+            </tbody>
+        </table> 
+
+   <div class="row">
+<nav aria-label=" col Page navigation example">
+  <ul class="pagination">
+  {% if page!= 1 %}
+    <li class="page-item"><a class="page-link" href="{{path('list.users' ,{numberOfElements:nmbre,startPage:page-nmbre})}}">Previous</a></li>
+    {% endif %}
+    {% for i in range (1,nbrePages) %}
+    <li class="page-item"><a class="page-link" href="{{path('list.users' ,{numberOfElements:nmbre,startPage:1+(i-1)*nmbre})}}">{{i}}</a></li>
+    {% endfor %}
+    {% if (page+nmbre)!= 81 %}
+    <li class="page-item"><a class="page-link" href="{{path('list.users' ,{numberOfElements:nmbre,startPage:page+nmbre})}}">Next</a></li>
+    {% endif %}
+  </ul>
+</nav>
+</div>
+        {% endblock %}
+  

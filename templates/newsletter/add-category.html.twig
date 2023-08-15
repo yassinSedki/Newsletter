@@ -1,0 +1,24 @@
+
+{% extends "template.html.twig" %} 
+{% block title%}
+      add category
+        {% endblock %}
+{% block pageTitle %}
+             add category                       
+        {% endblock %}
+       
+   
+        {% block body %}
+  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}})}}
+<div class="form-group">
+{{ form_row(form.name,{'attr':{'class':'form-control'}}) }}
+</div>
+
+{{form_row(form.add,{'attr':{'class':'btn btn-success'}})}}
+
+{{form_end(form)}}
+
+
+
+        {% endblock %}
+   

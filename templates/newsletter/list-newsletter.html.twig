@@ -1,0 +1,53 @@
+{% extends "template.html.twig" %}
+{% block title%}
+      newsletters
+        {% endblock %}
+    {% block pageTitle %}
+             Newsletter List                        
+        {% endblock %}
+        {% block body %}
+        <br>
+        <div class="container">
+        
+        <table   class="table table-dark table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Inscrit</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for newsletter in newsletters %}
+                <tr>
+                    <td>{{ newsletter.id }}</td>
+                    <td>{{ newsletter.name }}</td>
+                    <td>
+                        {% for category in newsletter.getCategory() %}
+                            {{ category.getName() }}
+                        {% endfor %}
+                    </td> 
+                    <td>
+                        {% for category in newsletter.getCategory() %}
+                            {{ category.getUsers()|length }}
+                        {% endfor %}
+                    </td> 
+                    <td>
+                        {% if newsletter.isSent == false %}
+                                  <button type="button" class="btn btn-primary">
+                                  <a href="{{ path('send_to_all', { newsletter: newsletter.id }) }}" style="color: #ffff;text-decoration: none;">Send </a> 
+                                  </button>
+                        {% else %}
+                                <button type="button" class="btn btn-success">sent</button>
+                        {% endif %}
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table> 
+        </div>
+        {% endblock %}
+    

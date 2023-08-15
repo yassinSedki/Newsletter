@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Votre inscription</h1>
+
+    <p>Vous êtes inscrit(e) à la newsletter</p>
+
+    <p>Cliquez sur ce lien <a href="{{ absolute_url(path('confirmation', {id:user.id }) )}}">pour confirmer votre inscription</a></p>
+{% endblock %}
